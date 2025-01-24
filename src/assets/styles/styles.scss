@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--GraphiteBlack, #1c1c1c);
+}
+
+.fluid {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: fit-content;
+  box-sizing: border-box;
+}
