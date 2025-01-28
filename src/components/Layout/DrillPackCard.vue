@@ -2,7 +2,7 @@
   <div class="drill-pack">
     <div class="image">
 
-      <img :src="props.drillPack.image" alt="">
+      <img :src="props.drillPack.photos[0]" alt="">
     </div>
     <div class="content">
       <div class="new">

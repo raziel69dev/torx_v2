@@ -4,6 +4,7 @@ import DrillSinglePage from '@/Pages/PageDrillsSingle.vue'
 import PageDrills from '@/Pages/PageDrills.vue'
 import PacksSinglePage from '@/Pages/PagePacksSingle.vue'
 import PagePacks from '@/Pages/PagePacks.vue'
+import UserCart from "@/components/Layout/UserCart.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,7 +37,11 @@ const router = createRouter({
         breadcrumb: "Комплектации", // For breadcrumbs in navbar
         to: "/pack", // For breadcrumbs in navbar
       },
-    },
+    },{
+      path: '/cart',
+      name: 'userCart',
+      component: UserCart,
+    }
   ],
 
   scrollBehavior(to, from, savedPosition) {

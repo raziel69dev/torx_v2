@@ -1,11 +1,11 @@
 <template>
-  <the-header ></the-header>
   <div class="main">
     <hero-slider />
     <tags-grid />
     <the-features id="features" />
     <video-box id="video"/>
     <drills-compare  id="models" />
+    <special-for-you id="special" />
     <drills-packs  id="packs" />
     <presentation-box  id="about" />
     <where-to-buy  id="where-to-buy"/>
@@ -24,10 +24,10 @@ import PresentationBox from "@/components/Layout/PresentationBox.vue";
 import WhereToBuy from "@/Pages/PageHomeParts/WhereToBuy.vue";
 import PtechPlatform from "@/components/Layout/PtechPlatform.vue";
 import {onMounted} from "vue";
+import SpecialForYou from "@/Pages/PageHomeParts/SpecialForYou.vue";
 
 
 onMounted(() => {
 
 })
 </script>
-<style lang="scss" scoped></style>

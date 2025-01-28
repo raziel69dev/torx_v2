@@ -15,7 +15,7 @@
       </p>
     </div>
     <div class="buttons">
-      <button-red>
+      <button-red @click="addToCart(props.drill)">
         Купить
       </button-red>
       <button-white @click="router.push('/drill/' + props.drill.name)">
@@ -52,7 +52,7 @@
           <span v-else>нет дополнительных комплектаций</span>
         </div>
       </div>
-      <button-black v-if="props.drill.packs" @click="">
+      <button-black v-if="props.drill.packs" @click="router.push('/pack')">
         посмотреть комплектации
       </button-black>
     </div>
@@ -70,6 +70,7 @@ import caseIcon from '@/assets/icons/case.svg'
 import InlineSvg from "vue-inline-svg";
 import ButtonBlack from "@/components/Layout/Buttons/ButtonBlack.vue";
 import {useRouter} from "vue-router";
+import {addToCart} from "@/Stores/userCart.js";
 
 const props = defineProps(['drill'])
 
@@ -80,6 +81,7 @@ const router = useRouter()
 
 <style scoped lang="scss">
 .drill-card {
+  width: 33%;
   .image {
     width: 100%;
     display: flex;
@@ -192,6 +194,7 @@ const router = useRouter()
   }
 }
 @media screen and (max-width: 992px) {
+
   .drill-card {
     max-width: 200px;
     .image img {

@@ -16,8 +16,9 @@
         hide: !menuSettings.dropdown && menuSettings.isCollapsed,
       }">
         <router-link v-for="link of menuItems"
-           :key="link.name"
-           :to="link.link"
+                     @click="menuSettings.isCollapsed = true"
+                     :key="link.name"
+                     :to="link.link"
            class="menu-link">{{ link.name }}</router-link>
       </div>
     </nav>
@@ -51,7 +52,8 @@ const menuSettings = reactive({
 
 const hideMenu = (e) => {
   const width = e.target.innerWidth
-  menuSettings.isCollapsed = width <= 1140;window.addEventListener("mousedown", closeByClickOutside);
+  menuSettings.isCollapsed = window.innerWidth <= 1140
+  window.addEventListener("mousedown", closeByClickOutside);
 
 }
 
@@ -63,7 +65,7 @@ const closeByClickOutside = (e) => {
 
 onMounted(() => {
   window.addEventListener("resize", hideMenu);
-
+  menuSettings.isCollapsed = window.innerWidth <= 1140
 })
 
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="features row">
     <h2>
-      Преимущества наших шуруповертов
+      Создано с участием ИИ
     </h2>
     <div class="content">
 

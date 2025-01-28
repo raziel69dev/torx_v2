@@ -4,16 +4,16 @@
     <div class="row justify-start">
       <div class="content">
         <h1>
-          Скоро в продаже
+          Уже в продаже
         </h1>
         <p class="large">
           Наши современные инструменты сочетают в себе высокую мощность, надежность и эргономику, чтобы обеспечить максимальную эффективность и комфорт в работе.
         </p>
         <div class="buttons">
-          <button-red>
+          <button-red @click="router.push('/#models')">
             Посмотреть модели
           </button-red>
-          <button-white>
+          <button-white @click="router.push('/#video')">
             Обзорное видео
           </button-white>
         </div>
@@ -42,6 +42,10 @@ import ButtonWhite from "@/components/Layout/Buttons/ButtonWhite.vue";
 import man from '@/assets/images/torx_man.webp'
 import ai from '@/assets/images/torx_ai.webp'
 import particles from '@/assets/images/torx_particles.webp'
+import {useRouter} from "vue-router";
+
+
+const router = useRouter()
 </script>
 
 <style scoped lang="scss">

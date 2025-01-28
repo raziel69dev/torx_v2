@@ -42,6 +42,7 @@ const props = defineProps({
   border: 1px solid var(--GraphiteGray, #474A51);
   background: var(--GraphiteBlack, #1C1C1C);
   gap: 20px;
+  height: fit-content;
 
   .text {
 

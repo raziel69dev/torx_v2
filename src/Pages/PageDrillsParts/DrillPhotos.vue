@@ -7,7 +7,7 @@
                @click="setPhoto(index)"
                :class="{selected: photos.selected === photo}">
         </div>
-        <div class="selected">
+        <div class="selected" @click="modal.isVisible = true">
           <img :src="photos.selected" alt="">
         </div>
       </div>
@@ -42,14 +42,23 @@
         </div>
 
         <div class="buttons">
-          <button-red>
+          <button-red @click="addToCart(props.drill)">
             Купить
           </button-red>
-          <button-white @click="emits('scrollTo', 'video')">
+          <button-white v-if="props.drill.packs" @click="emits('scrollTo', 'packs')">
+            Комплектации
+          </button-white>
+          <button-white @click="emits('scrollTo', 'videoBox')">
             Обзорное видео
           </button-white>
         </div>
       </div>
+
+      <Teleport to="body">
+        <ThePopup v-if="modal.isVisible" @close="modal.isVisible = false">
+          <images-carousel :images="props.drill.photos" />
+        </ThePopup>
+      </Teleport>
     </div>
 </template>
 <script setup>
@@ -61,10 +70,18 @@ import speedIcon from '@/assets/icons/speed.svg'
 import {useRoute} from "vue-router";
 import ButtonRed from "@/components/Layout/Buttons/ButtonRed.vue";
 import ButtonWhite from "@/components/Layout/Buttons/ButtonWhite.vue";
+import ThePopup from "@/components/Layout/Popup/ThePopup.vue";
+import ImagesCarousel from "@/components/Layout/ImagesCarousel.vue";
+import {addToCart} from "@/Stores/userCart.js";
 
 const props = defineProps(['drill'])
 
 const emits = defineEmits(['scrollTo'])
+
+const modal = reactive({
+  isVisible: false
+})
+
 
 const photos = reactive({
   allPhotos: props.drill.photos,
@@ -129,6 +146,7 @@ watch(() => props.drill, () => {
     .selected {
       width: 80%;
       img {
+        cursor: pointer;
         width: 100%;
       }
     }
@@ -141,13 +159,14 @@ watch(() => props.drill, () => {
       margin-top: 40px;
       display: flex;
       align-items: center;
-      gap: 80px;
+      justify-content: space-between;
 
       .badge {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 10px;
+        max-width: 200px;
       }
 
       &.voltage {

@@ -1,5 +1,4 @@
 <template>
-  <the-header />
   <main>
     <the-breadcrumbs lastItem="Комплектации" />
     <drills-packs style="margin-top: 0;" />

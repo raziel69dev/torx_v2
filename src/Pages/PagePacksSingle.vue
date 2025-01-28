@@ -1,5 +1,4 @@
 <template>
-  <the-header />
   <main>
     <the-breadcrumbs :lastItem="drill.name" />
     <pack-photos :model="drill.model" />

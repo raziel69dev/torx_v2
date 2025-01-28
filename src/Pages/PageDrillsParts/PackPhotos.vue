@@ -7,7 +7,7 @@
                @click="setPhoto(index)"
                :class="{selected: photos.selected === photo}">
         </div>
-        <div class="selected">
+        <div class="selected" @mousedown="modal.isVisible = true">
           <img :src="photos.selected" alt="">
         </div>
       </div>
@@ -24,7 +24,7 @@
         </ul>
 
         <div class="buttons">
-          <button-red>
+          <button-red @click="addToCart(model)">
             Купить
           </button-red>
           <button-white @click="emits('scrollTo', 'video')">
@@ -32,6 +32,12 @@
           </button-white>
         </div>
       </div>
+
+      <Teleport to="body">
+        <ThePopup v-if="modal.isVisible" @close="modal.isVisible = false">
+          <images-carousel :images="props.model.photos" />
+        </ThePopup>
+      </Teleport>
     </div>
 </template>
 <script setup>
@@ -39,10 +45,18 @@ import {onMounted, reactive, watch} from "vue";
 import {useRoute} from "vue-router";
 import ButtonRed from "@/components/Layout/Buttons/ButtonRed.vue";
 import ButtonWhite from "@/components/Layout/Buttons/ButtonWhite.vue";
+import ThePopup from "@/components/Layout/Popup/ThePopup.vue";
+import ImagesCarousel from "@/components/Layout/ImagesCarousel.vue";
+import {addToCart} from "@/Stores/userCart.js";
 
 const props = defineProps(['model'])
 
 const emits = defineEmits(['scrollTo'])
+
+
+const modal = reactive({
+  isVisible: false
+})
 
 const photos = reactive({
   allPhotos: props.model.photos,

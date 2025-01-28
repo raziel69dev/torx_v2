@@ -1,11 +1,10 @@
 <template>
-  <the-header />
   <main>
     <the-breadcrumbs :lastItem="drill.name" />
-    <drill-photos :drill="drill.model" @scroll-to="scrollToItem('videoBox')"/>
+    <drill-photos :drill="drill.model" @scroll-to="emit => scrollToItem(emit)"/>
     <drill-about :drill="drill.model"  />
 
-    <drills-packs v-if="drill.model.packs" :model="drill.model.packs" />
+    <drills-packs id="packs" v-if="drill.model.packs" :model="drill.model.packs" />
     <video-box id="videoBox"></video-box>
   </main>
 </template>
@@ -33,7 +32,7 @@ const drill = reactive({
 const videoBox = ref(null)
 
 const scrollToItem = (item) => {
-  document.getElementById('videoBox').scrollIntoView({ behavior: "smooth", block: 'start' })
+  document.getElementById(item).scrollIntoView({ behavior: "smooth", block: 'start' })
 }
 
 watch(() => route.path, () => {

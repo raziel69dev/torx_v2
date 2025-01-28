@@ -1,5 +1,4 @@
 <template>
-  <the-header />
   <main>
     <the-breadcrumbs lastItem="Модели" />
     <h2 style="width: 100%; text-align: center">Модели шуруповертов</h2>

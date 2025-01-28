@@ -14,7 +14,7 @@
         <p>
           Наши современные инструменты сочетают в себе высокую мощность, надежность и эргономику, чтобы обеспечить максимальную эффективность и комфорт в работе.
         </p>
-        <button-red>
+        <button-red @click="router.push('/#special')">
           Специальное предложение
         </button-red>
       </div>
@@ -40,6 +40,9 @@
 <script setup>
 import torxLogo from '@/assets/logos/torx.webp'
 import ButtonRed from "@/components/Layout/Buttons/ButtonRed.vue";
+import {useRouter} from "vue-router";
+
+const router = useRouter()
 const links = {
   nav: {
     name: 'Навигация',
@@ -89,7 +92,7 @@ const links = {
       link: '/packs/cd-12tc'
     },{
       name: 'CID-21C',
-      link: '/packs/cd-21c'
+      link: '/packs/cid-21c'
     },]
   }
 }
